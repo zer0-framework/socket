@@ -22,6 +22,9 @@
         "Zer0-Framework/Config": "*",
         "kakserpom/phpdaemon": "dev-master"
     },
+    "bin": [
+        "bin/sockjs-server"
+    ],
     "autoload": {
         "classmap": ["src/"]
     },
