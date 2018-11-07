@@ -1,0 +1,30 @@
+{
+    "name"  : "Zer0-Framework/Socket",
+    "type"  : "library",
+    "keywords": ["Zer0", "highload"],
+    "homepage": "https://github.com/Zer0-Framework/Socket",
+    "license" : "GPL-3.0-or-later",
+    "description": "",
+    "authors" : [
+        {
+            "name"      : "Vasily Zorin",
+            "email"     : "kak.serpom.po.yaitsam@gmail.com",
+            "role"      : "Maintainer"
+        }
+    ],
+    "support" : {
+        "email" : "kak.serpom.po.yaitsam@gmail.com",
+        "issues": "https://github.com/Zer0-Framework/Socket/issues"
+    },
+    "require": {
+        "php": ">=7.2",
+        "Zer0-Framework/Zer0": "*",
+        "Zer0-Framework/Config": "*",
+        "kakserpom/phpdaemon": "dev-master"
+    },
+    "autoload": {
+        "classmap": ["src/"]
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
