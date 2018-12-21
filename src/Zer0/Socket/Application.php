@@ -63,22 +63,27 @@ class Application extends \PHPDaemon\Core\AppInstance
 
         $config = $app->broker('Socket')->get()->config;
 
-        $route = $routes->{$config->route} ?? null;
-
-        if (!$route) {
-            throw new RouteNotFound("Route '" . $config->route . "' not found.");
-        }
-
         $this->services = $config->services;
 
         $this->redis = $app->broker('RedisAsync')->get();
 
         $this->ws = WebSocketPool::getInstance();
 
-        $class = $config->socketClass;
-        $this->ws->addRoute(trim($route['path'], '/'), function ($client) use ($class) {
-            return new $class($client, $this);
-        });
+        foreach ($config->routes as $routeName => $class) {
+            $route = $routes->{$routeName} ?? null;
+
+            if (!$route) {
+                throw new RouteNotFound("Route '" .$routeName . "' not found.");
+            }
+
+            $this->ws->addRoute(trim($route['path'], '/'), function ($client) use ($class) {
+                return new $class($client, $this);
+            });
+            $this->ws->addRoute(trim($route['path'], '/') . '/', function ($client) use ($class) {
+                return new $class($client, $this);
+            });
+        }
+
 
         $this->sockjs = SockJS::getInstance('');
         $this->sockjs->setRedis($this->redis);
