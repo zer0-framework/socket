@@ -70,7 +70,7 @@ class Socket extends \PHPDaemon\WebSocket\Route
      */
     public function service($service)
     {
-        return isset($this->services[$service]) ? $this->services[$service] : null;
+        return $this->services[$service] ?? null;
     }
 
     /**
