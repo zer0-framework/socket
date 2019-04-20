@@ -61,11 +61,11 @@ class Application extends \PHPDaemon\Core\AppInstance
 
         $routes = $app->broker('HTTP')->getConfig()->Routes;
 
-        $config = $app->broker('Socket')->get()->config;
+        $config = $app->factory('Socket')->config;
 
         $this->services = $config->services;
 
-        $this->redis = $app->broker('RedisAsync')->get();
+        $this->redis = $app->factory('RedisAsync');
 
         $this->ws = WebSocketPool::getInstance();
 

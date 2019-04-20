@@ -21,7 +21,7 @@ class PubSub extends Generic
      */
     protected function init()
     {
-        $this->pubsub = $this->socket->app->broker('PubSubAsync')->get();
+        $this->pubsub = $this->socket->app->factory('PubSubAsync');
         $this->socket->on('finish', function () {
             $this->pubsub->unsubscribeAll();
         });
