@@ -53,7 +53,7 @@ class Application extends \PHPDaemon\Core\AppInstance
     public function onReady()
     {
         $app = null;
-        require ZERO_ROOT . '/vendor/Zer0-Framework/Zer0/src/bootstrap.php';
+        require ZERO_ROOT . '/vendor/zer0-framework/core/src/bootstrap.php';
 
         define('ZERO_ASYNC', 1);
 
